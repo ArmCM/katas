@@ -1,0 +1,19 @@
+{
+    "name": "armcm/katas",
+    "description": "katas with phpunit, tutorial tdd laracast",
+    "require": {
+        "php": "^7.4",
+        "phpunit/phpunit": "^9.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArmCM",
+            "email": "ackurtcobain15@gmail.com"
+        }
+    ]
+}
