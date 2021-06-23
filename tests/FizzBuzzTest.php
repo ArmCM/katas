@@ -13,4 +13,12 @@ class FizzBuzzTest extends TestCase
             $this->assertEquals('fizz', FizzBuzz::convert($number));
         }
     }
+
+    /** @test */
+    public function it_return_buzz_for_multiples_of_five()
+    {
+        foreach ([5, 10, 20, 25] as $number) {
+            $this->assertEquals('buzz', FizzBuzz::convert($number));
+        }
+    }
 }
