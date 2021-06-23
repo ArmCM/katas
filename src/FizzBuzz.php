@@ -2,10 +2,12 @@
 
 namespace App;
 
-
 class FizzBuzz
 {
-
+    /**
+     * @param  int  $number
+     * @return int|string
+     */
     public static function convert(int $number)
     {
         $result = '';
@@ -18,6 +20,6 @@ class FizzBuzz
             $result .= 'buzz';
         }
 
-        return $result;
+        return $result ?: $number;
     }
 }
