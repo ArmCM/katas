@@ -8,6 +8,10 @@ class FizzBuzz
 
     public static function convert(int $number)
     {
+        if ($number % 3 === 0 && $number % 5 === 0) {
+            return 'fizzBuzz';
+        }
+
         if ($number % 3 === 0) {
             return 'fizz';
         }

@@ -21,4 +21,12 @@ class FizzBuzzTest extends TestCase
             $this->assertEquals('buzz', FizzBuzz::convert($number));
         }
     }
+
+    /** @test */
+    public function it_return_fizzBuzz_for_multiples_of_three_and_five()
+    {
+        foreach ([15, 30, 45, 60] as $number) {
+            $this->assertEquals('fizzBuzz', FizzBuzz::convert($number));
+        }
+    }
 }
