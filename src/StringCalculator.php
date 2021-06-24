@@ -4,12 +4,14 @@ namespace App;
 
 class StringCalculator
 {
-    public function add(string $number)
+    public function add(string $numbers)
     {
-        if (! $number) {
+        if (! $numbers) {
             return 0;
         }
 
-        return intval($number);
+        $numbers = explode(",", $numbers);
+
+        return array_sum($numbers);
     }
 }
