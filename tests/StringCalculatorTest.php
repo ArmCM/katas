@@ -47,4 +47,12 @@ class StringCalculatorTest extends TestCase
 
         $this->assertsame(9, $calculator->add("5\n2\n2"));
     }
+
+    /** @test */
+    public function negative_numbers_not_allowed()
+    {
+        $this->expectException(\Exception::class);
+
+        (new StringCalculator)->add("5, -2");
+    }
 }
