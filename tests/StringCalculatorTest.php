@@ -13,7 +13,7 @@ class StringCalculatorTest extends TestCase
     {
         $calculator = new StringCalculator;
 
-        $this->assertsame(0, $calculator->add(''));
+        $this->assertsame(0, $calculator->add(""));
     }
 
     /** @test */
@@ -21,7 +21,7 @@ class StringCalculatorTest extends TestCase
     {
         $calculator = new StringCalculator;
 
-        $this->assertsame(5, $calculator->add('5'));
+        $this->assertsame(5, $calculator->add("5"));
     }
 
     /** @test */
@@ -29,7 +29,7 @@ class StringCalculatorTest extends TestCase
     {
         $calculator = new StringCalculator;
 
-        $this->assertsame(10, $calculator->add('5, 5'));
+        $this->assertsame(10, $calculator->add("5, 5"));
     }
 
     /** @test */
@@ -37,6 +37,14 @@ class StringCalculatorTest extends TestCase
     {
         $calculator = new StringCalculator;
 
-        $this->assertsame(21, $calculator->add('5, 5, 9, 2'));
+        $this->assertsame(21, $calculator->add("5, 5, 9, 2"));
+    }
+
+    /** @test */
+    public function accept_a_new_line_character_as_a_delimiter_too()
+    {
+        $calculator = new StringCalculator;
+
+        $this->assertsame(9, $calculator->add("5\n2\n2"));
     }
 }
