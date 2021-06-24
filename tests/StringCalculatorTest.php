@@ -15,4 +15,12 @@ class StringCalculatorTest extends TestCase
 
         $this->assertsame(0, $calculator->add(''));
     }
+
+    /** @test */
+    public function find_the_sum_of_a_single_number()
+    {
+        $calculator = new StringCalculator;
+
+        $this->assertsame(5, $calculator->add('5'));
+    }
 }

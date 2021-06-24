@@ -6,6 +6,10 @@ class StringCalculator
 {
     public function add(string $number)
     {
-        return 0;
+        if (! $number) {
+            return 0;
+        }
+
+        return intval($number);
     }
 }
