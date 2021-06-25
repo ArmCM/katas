@@ -8,9 +8,20 @@ use PHPUnit\Framework\TestCase;
  */
 class RomanNumeralsTest extends TestCase
 {
-    /** @test */
-    public function it_validates_if_arabic_number_corresponds_the_roman_numeral_representation()
+    /**
+     * @test
+     * @dataProvider checks
+     */
+    public function it_validates_if_arabic_number_corresponds_the_roman_numeral_representation($number, $numeral)
     {
-        $this->assertEquals('I', RomanNumerals::generate(1));
+        $this->assertEquals($numeral, RomanNumerals::generate($number));
+    }
+
+    public function checks()
+    {
+        return [
+            [1, 'I'],
+            [2, 'II'],
+        ];
     }
 }
