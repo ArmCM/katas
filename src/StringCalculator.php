@@ -2,34 +2,65 @@
 
 namespace App;
 
+use Exception;
+
 class StringCalculator
 {
+    const MAX_NUMBER_ALLOWED = 1000;
+    protected string $delimiter = "[,|\n]";
+    protected string $customDelimiter = "\/\/(.)\n";
+
+    /**
+     * @throws Exception
+     */
     public function add(string $numbers)
     {
-        $delimiter = "[,|\n]";
+        $numbers = $this->parseString($numbers);
 
-        if (! $numbers) {
-            return 0;
-        }
+        $numbers = $this->disallowNegatives($numbers)
+                        ->ignoreGreaterThan1000($numbers);
 
-        if (preg_match("/\/\/(.)\n/", $numbers, $matches)) {
-            $delimiter = $matches[1];
+        return array_sum($numbers);
+    }
+
+    /**
+     * @param  string  $numbers
+     * @return array
+     */
+    protected function parseString($numbers)
+    {
+        if ( preg_match("/{$this->customDelimiter}/", $numbers, $matches) ) {
+            $this->delimiter = $matches[1];
 
             $numbers = str_replace($matches[0], '', $numbers);
         }
 
-        $numbers = preg_split("/{$delimiter}/", $numbers);
+        return preg_split("/{$this->delimiter}/", $numbers);
+    }
 
-        foreach($numbers as $number) {
-            if ($number < 0) {
-                throw new \Exception('Negative numbers are disallowed');
+    /**
+     * @param  array  $numbers
+     * @throws Exception
+     */
+    protected function disallowNegatives($numbers): StringCalculator
+    {
+        foreach ($numbers as $number) {
+            if ( $number < 0 ) {
+                throw new Exception('Negative numbers are disallowed');
             }
         }
 
-        $numbers = array_filter($numbers, function ($number) {
-            return $number <= 1000;
-        });
+        return $this;
+    }
 
-        return array_sum($numbers);
+    /**
+     * @param  array  $numbers
+     * @return array
+     */
+    protected function ignoreGreaterThan1000($numbers)
+    {
+        return array_filter(
+            $numbers, fn ($number) => $number <= self::MAX_NUMBER_ALLOWED
+        );
     }
 }
