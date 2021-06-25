@@ -4,6 +4,11 @@ namespace App;
 
 class RomanNumerals
 {
+    const NUMERALS = [
+        'IV' => 4,
+        'I' => 1,
+    ];
+
     /**
      * @param  int  $number
      */
@@ -11,10 +16,12 @@ class RomanNumerals
     {
         $result = '';
 
-        while ($number > 0) {
-            $result .= 'I';
+        foreach (static::NUMERALS as $numeral => $arabic) {
+            while ($number >= $arabic) {
+                $result .= $numeral;
 
-            $number -= 1;
+                $number -= $arabic;
+            }
         }
 
         return $result;
