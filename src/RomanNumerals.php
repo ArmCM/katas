@@ -27,11 +27,13 @@ class RomanNumerals
     {
         $result = '';
 
-        foreach (static::NUMERALS as $numeral => $arabic) {
-            while ($number >= $arabic) {
-                $result .= $numeral;
+        if ($number <= 0 || $number >= 4000) {
+            return false;
+        }
 
-                $number -= $arabic;
+        foreach (static::NUMERALS as $numeral => $arabic) {
+            for (; $number >= $arabic; $number -= $arabic) {
+                $result .= $numeral;
             }
         }
 
