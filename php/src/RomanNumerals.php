@@ -22,8 +22,9 @@ class RomanNumerals
 
     /**
      * @param  int  $number
+     * @return false|string
      */
-    public static function generate($number)
+    public static function generate(int $number)
     {
         $result = '';
 

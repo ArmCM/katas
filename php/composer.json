@@ -1,6 +1,6 @@
 {
     "name": "armcm/katas",
-    "description": "katas with phpunit, tutorial tdd laracast",
+    "description": "Katas with phpunit, tutorial tdd laracast",
     "require": {
         "php": "^7.4",
         "phpunit/phpunit": "^9.2"
@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "ArmCM",
-            "email": "ackurtcobain15@gmail.com"
+            "email": "arm.111101.ipn@gmail.com"
         }
     ]
 }
