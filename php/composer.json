@@ -2,7 +2,7 @@
     "name": "armcm/katas",
     "description": "Katas with phpunit, tutorial tdd laracast",
     "require": {
-        "php": "^7.4",
+        "php": "^8.2",
         "phpunit/phpunit": "^9.2"
     },
     "autoload": {
