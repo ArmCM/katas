@@ -8,7 +8,7 @@ class FizzBuzz
      * @param  int  $number
      * @return int|string
      */
-    public static function convert(int $number)
+    public static function convert(int $number): int|string
     {
         $result = '';
 

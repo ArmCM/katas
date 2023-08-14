@@ -13,8 +13,12 @@ class StringCalculator
     /**
      * @throws Exception
      */
-    public function add(string $numericString)
+    public function add(string $numericString): float|int
     {
+        if ($numericString === "") {
+            return 0;
+        }
+
         $numbers = $this->parseString($numericString);
 
         $this->disallowNegatives($numbers);
@@ -22,11 +26,7 @@ class StringCalculator
         return array_sum($this->ignoreGreaterThan1000($numbers));
     }
 
-    /**
-     * @param  string  $numbers
-     * @return array
-     */
-    protected function parseString($numbers)
+    protected function parseString(string $numbers): array
     {
         if (preg_match("/{$this->customDelimiter}/", $numbers, $matches)) {
             $this->delimiter = $matches[1];
@@ -38,24 +38,21 @@ class StringCalculator
     }
 
     /**
-     * @param  array  $numbers
-     * @throws Exception
-     * @return void
+     *
+     *@throws Exception
      */
-    protected function disallowNegatives($numbers)
+    protected function disallowNegatives(array $numbers): array
     {
         foreach ($numbers as $number) {
             if ( $number < 0 ) {
                 throw new Exception('Negative numbers are disallowed');
             }
         }
+
+        return $numbers;
     }
 
-    /**
-     * @param  array  $numbers
-     * @return array
-     */
-    protected function ignoreGreaterThan1000($numbers)
+    protected function ignoreGreaterThan1000(array $numbers): array
     {
         return array_filter(
             $numbers, fn ($number) => $number <= self::MAX_NUMBER_ALLOWED

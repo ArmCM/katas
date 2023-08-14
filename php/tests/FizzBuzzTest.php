@@ -5,7 +5,6 @@ use PHPUnit\Framework\TestCase;
 
 class FizzBuzzTest extends TestCase
 {
-
     /** @test */
     public function it_return_fizz_for_multiples_of_three()
     {
