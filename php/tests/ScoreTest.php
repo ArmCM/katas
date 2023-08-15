@@ -1,5 +1,6 @@
 <?php
 
+use App\Score;
 use PHPUnit\Framework\TestCase;
 
 class ScoreTest extends TestCase
