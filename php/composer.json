@@ -5,6 +5,9 @@
         "php": "^8.2",
         "phpunit/phpunit": "^9.2"
     },
+    "require-dev": {
+        "psy/psysh": "@stable"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -13,7 +16,7 @@
     "authors": [
         {
             "name": "ArmCM",
-            "email": "arm.111101.ipn@gmail.com"
+            "email": "acalderon.root@gmail.com"
         }
     ]
 }
