@@ -2,23 +2,30 @@
 
 namespace App;
 
-class Score
-{
-    protected static int $playerOnePoints = 0;
-    protected static int $playerTwoPoints = 0;
+class Score {
+    protected array $playerOne;
+    protected array $playerTwo;
+    protected int $playerOnePoints = 0;
+    protected int $playerTwoPoints = 0;
 
-    public static function sum($playerOne, $playerTwo)
+    public function __construct($playerOne, $playerTwo)
     {
-        for ($i = 0, $j = 0; $i < count($playerOne), $j < count($playerTwo); $i++, $j++) {
-            if ($playerOne[$i] > $playerTwo[$j]) {
-                self::$playerOnePoints += 1;
+        $this->playerOne = $playerOne;
+        $this->playerTwo = $playerTwo;
+    }
+
+    public function sum(): array
+    {
+        for ($i = 0, $j = 0; $i < count($this->playerOne), $j < count($this->playerTwo); $i++, $j++) {
+            if ($this->playerOne[$i] > $this->playerTwo[$j]) {
+                $this->playerOnePoints += 1;
             }
 
-            if ($playerTwo[$j] > $playerOne[$i]) {
-                self::$playerTwoPoints += 1;
+            if ($this->playerTwo[$j] > $this->playerOne[$i]) {
+                $this->playerTwoPoints += 1;
             }
         }
 
-        return [self::$playerOnePoints, self::$playerTwoPoints];
+        return [$this->playerOnePoints, $this->playerTwoPoints];
     }
 }
