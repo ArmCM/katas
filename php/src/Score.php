@@ -9,15 +9,13 @@ class Score
 
     public static function sum($playerOne, $playerTwo)
     {
-        for ($i = 0; $i < count($playerOne); $i++) {
-            for ($j = 0; $j < count($playerTwo); $j++) {
-                if ($playerOne[$i] > $playerTwo[$j]) {
-                    self::$playerOnePoints += 1;
-                }
+        for ($i = 0, $j = 0; $i < count($playerOne), $j < count($playerTwo); $i++, $j++) {
+            if ($playerOne[$i] > $playerTwo[$j]) {
+                self::$playerOnePoints += 1;
+            }
 
-                if ($playerTwo[$j] > $playerOne[$i]) {
-                    self::$playerTwoPoints += 1;
-                }
+            if ($playerTwo[$j] > $playerOne[$i]) {
+                self::$playerTwoPoints += 1;
             }
         }
 
