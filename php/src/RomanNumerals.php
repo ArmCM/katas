@@ -24,7 +24,7 @@ class RomanNumerals
      * @param  int  $number
      * @return false|string
      */
-    public static function generate(int $number)
+    public static function generate(int $number): false|string
     {
         $result = '';
 
