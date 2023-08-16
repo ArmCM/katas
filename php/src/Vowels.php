@@ -3,7 +3,6 @@
 namespace App;
 
 use Exception;
-use function PHPUnit\Framework\isEmpty;
 
 class Vowels
 {
@@ -20,18 +19,24 @@ class Vowels
      */
     public function count(): float|int
     {
-        $countLetters = array_count_values(str_split($this->word));
+        $vowels = $this->countVowels($this->word);
 
-        $countVowels = array_filter($countLetters, function ($value) {
-
-            return array_keys($this->vowels, $value);
-
-        }, ARRAY_FILTER_USE_KEY);
-
-        if (empty($countVowels)) {
+        if (empty($vowels)) {
             throw new Exception('The string not contains vowels.');
         }
 
-        return array_sum($countVowels);
+        return array_sum($vowels);
+    }
+
+    protected function countLetters($word): array
+    {
+        return array_count_values(str_split($word));
+    }
+
+    protected function countVowels($word): array
+    {
+        return array_filter($this->countLetters($word), function ($value) {
+            return array_keys($this->vowels, $value);
+        }, ARRAY_FILTER_USE_KEY);
     }
 }
