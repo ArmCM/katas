@@ -26,6 +26,17 @@ Writte `eval(\Psy\sh());` in the section of code that you want debug and run the
 
 ---
 
+# Go
+
+### Run tests
+
+- Run all tests
+
+```shell
+go test -v ./tests
+```
+
+
 # Python
 
 ### Run tests
